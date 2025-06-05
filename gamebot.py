@@ -36,9 +36,12 @@ def start():
             p.click()
         except:
             pass
-    #if cont is True:  THIS IS FOR IF THERE IS A CONTINUE INSTEAD OF A NEW GAME, NEED TO CLICK YES TO RESTART, BEGIN HERE
-        #try:
-            #x = p.locateOnScreen()
+        try:
+            x = p.locateOnScreen(image='images/yestonewgame.png')
+            p.moveTo(x)
+            p.click()
+        except:
+            pass
 def tut():
     tutorial = 0
     t.sleep(0.1)
@@ -50,9 +53,18 @@ def tut():
     except:
         pass
     if tutorial == 1:
-        x = p.locateOnScreen(image='images/info.png')
+        try:
+            x = p.locateOnScreen(image='images/info.png')
+            p.moveTo(x)
+            p.click()
+        except:
+            pass
+    try:
+        x = p.locateOnScreen(image='images/firstpeon.png')
         p.moveTo(x)
         p.click()
+    except:
+        pass
 
 while True:
     start()
