@@ -42,7 +42,9 @@ def start():
             p.click()
         except:
             pass
+
 def tut():
+    first = False
     tutorial = 0
     t.sleep(0.1)
     try:
@@ -59,12 +61,39 @@ def tut():
             p.click()
         except:
             pass
-    try:
-        x = p.locateOnScreen(image='images/firstpeon.png')
-        p.moveTo(x)
-        p.click()
-    except:
-        pass
+    if first == False:
+        try:
+            x = p.locateOnScreen(image='images/firstpeon.png')
+            p.moveTo(x)
+            p.click()
+            first = True
+        except:
+            pass
+    if first == True:
+        try:
+            x = p.locateOnScreen(image='images/close.png')
+            p.moveTo(x)
+            p.click()
+        except:
+            pass
+
+def game():
+    house = False
+    x = 0
+    if house == False:
+        try:
+            x = p.locateOnScreen(image='images/6dollars.png')
+            if x != 0:
+                x = p.locateOnScreen(image='images/build.png')
+                p.moveTo(x)
+                p.click()
+                t.sleep(0.1)
+                x = p.locateOnScreen(image='images/6dollars.png')
+                p.moveTo(x)
+                p.click()
+        except:
+            pass
+            
 
 while True:
     start()
