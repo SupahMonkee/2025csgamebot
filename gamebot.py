@@ -5,19 +5,22 @@ def start():
     set = False
     t.sleep(0.1)
     try:
-        try:
-            x = p.locateOnScreen(image='images/settings.png')
-            p.moveTo(x)
-            p.click()
-            cont = True
-        except:
-            x = p.locateOnScreen(image='images/settings2.png')
-            p.moveTo(x)
-            p.click()
-        set = True
-        if set is True:
+        if set == False:
             try:
-                x = p.locateOnScreen(image='images/screeneffect.png')
+                x = p.locateOnScreen(image='images/settings.png')
+                p.moveTo(x)
+                p.click()
+                cont = True
+                set = True
+            except:
+                x = p.locateOnScreen(image='images/settings2.png')
+                p.moveTo(x)
+                p.click()
+                set = True
+            set = True
+        if set == True:
+            try:
+                x = p.locateOnScreen(image='images/screeneffect.png', confidence=0.7)
                 p.moveTo(x)
                 p.click()
                 screeneff = True
@@ -53,7 +56,7 @@ def tut():
         p.click()
         tutorial = 1
     except:
-        pass
+        tutorial = 1
     if tutorial == 1:
         try:
             x = p.locateOnScreen(image='images/info.png')
@@ -88,13 +91,33 @@ def game():
                 p.moveTo(x)
                 p.click()
                 t.sleep(0.1)
-                x = p.locateOnScreen(image='images/6dollars.png')
-                p.moveTo(x)
-                p.click()
+            x = p.locateOnScreen(image='images/buy5.png')
+            p.moveTo(x)
+            p.click()
         except:
             pass
-            
+    try:
+        x = p.locateOnScreen(images='images/5dollars.png')
+        p.moveTo(x)
+        p.click()
+        t.sleep(0.1)
+        try:
+            x = p.locateOnScreen(image='images/info.png')
+            p.moveTo(x)
+            p.click()
+            t.sleep(0.1)
+            try:
+                x = p.locateOnScreen(image='images/buy5')
+                p.moveTo(x)
+                p.click()
+            except:
+                pass
+        except:
+            pass
+    except:
+        pass
 
 while True:
     start()
     tut()
+    game()
